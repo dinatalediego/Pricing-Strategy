@@ -70,7 +70,38 @@ def send_summary_email(attachments: list[Path]) -> None:
         "- Forecast de separaciones por proyecto/tipología.\n"
         "- Visualizaciones JPG de demanda y elasticidad.\n\n"
         "Enviado automáticamente por GitHub Actions.\n"
-    )
+
+    "Hola equipo,\n\n"
+    "Adjunto el informe econométrico de pricing actualizado al momento. "
+    "Este reporte permite alinear precios a criterios analíticos robustos: curva por piso, elasticidad precio–demanda "
+    "y forecasting de absorción.\n\n"
+
+    "1) Pricing Model – Curva Esperada vs Precio Real\n"
+    "- Detecta unidades con precios por encima o por debajo de la curva.\n"
+    "- Sugerencias automáticas para subir, bajar o mantener.\n"
+    "- Permite optimizar margen sin perder competitividad.\n\n"
+
+    "2) Elasticidad Precio–Cantidad\n"
+    "- Mide sensibilidad de la demanda ante variaciones de precio.\n"
+    "- Ayuda a identificar proyectos donde subir precios NO afecta conversiones.\n"
+    "- También detecta tipologías donde una reducción mejora absorción.\n\n"
+
+    "3) Curva de Demanda\n"
+    "- Visualización de la relación Precio vs Separaciones.\n"
+    "- Apoya decisiones de pricing por proyecto.\n\n"
+
+    "4) Forecast 90 días\n"
+    "- Proyección de separaciones por proyecto/tipología usando Prophet.\n"
+    "- Sirve para planificar objetivos comerciales y estrategias de oferta.\n\n"
+
+    "Se adjuntan:\n"
+    "- Archivo de pricing con recomendaciones.\n"
+    "- Elasticidad por proyecto/tipología.\n"
+    "- Forecast de demanda.\n"
+    "- Imágenes JPG de análisis econométrico.\n\n"
+
+    "Enviado automáticamente por GitHub Actions (actualización cada 1 hora).\n"
+)
 
     for path in attachments:
         if not path.exists():
