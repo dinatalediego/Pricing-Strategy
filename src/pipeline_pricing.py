@@ -45,8 +45,15 @@ def send_email_with_report(report_path: Path):
     print(f"Correo enviado a {to_addr} con {report_path.name}")
 
 def main():
+    """ clean_path = run_etl_unidades()
+    report_path = run_pricing_model(clean_path) """
+    print(">>> [PIPELINE PRICING] Iniciando ETL de unidades...")
     clean_path = run_etl_unidades()
+    print(f">>> [PIPELINE PRICING] ETL listo: {clean_path}")
+
+    print(">>> [PIPELINE PRICING] Corriendo modelo de precios-curva...")
     report_path = run_pricing_model(clean_path)
+    print(f">>> [PIPELINE PRICING] Reporte generado: {report_path}")
     send_email_with_report(report_path)
 
 if __name__ == "__main__":

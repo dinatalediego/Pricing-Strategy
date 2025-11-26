@@ -1,0 +1,31 @@
+name: Pricing + Econometrics + Forecast
+
+on:
+  schedule:
+    - cron: "0 * * * *"     # cada hora
+  workflow_dispatch:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run full pipeline (ETL + Pricing + Elasticidad + Forecast + Email)
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO: ${{ secrets.GMAIL_TO }}
+        run: |
+          python src/pipeline_pricing.py
+          python src/pipeline_elasticidad.py
+          python src/pipeline_forecast.py
+          python src/pipeline_reporting.py
